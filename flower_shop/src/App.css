@@ -7,6 +7,24 @@
   pointer-events: none;
 }
 
+.pea-plant {
+  
+  border: 2px solid black;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+
+  
+}
+
+.stats-box {
+  border: 2px solid black;
+  max-width: 50%;
+  margin: auto;
+  padding: 20px;
+
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
