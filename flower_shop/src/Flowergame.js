@@ -8,13 +8,23 @@ function Flowergame() {
     //const [peaCount, setPeaCount] = useState(0); // keeps track of total grown plants
     const [selectedPlants, setSelectedPlants] = useState([]);   // selected plants to create new plant
 
-    const pots = [
-        { id: 1, color: 'Xx', state: 'grown' },    // start with color, add more
-        { id: 2, color: 'xx', state: 'grown' },
-        { id: 3, color: '', state: 'empty' },
-        { id: 4, color: '', state: 'empty' }
-    ]
+    const [pots, setPots] = useState([
+        { id: 0, color: 'Xx', state: 'grown' },    // start with color, add more
+        { id: 1, color: 'xx', state: 'grown' },     // id is same as index into pots
+        { id: 2, color: '', state: 'empty' },
+        { id: 3, color: '', state: 'empty' }
+    ]);
 
+    console.log(pots[0].color);
+
+    const updatePeas = (id, trait, newTrait) => {
+        setPots((prevPots) => {
+            const newPeas = [...prevPots];
+            newPeas[id] = {...newPeas[id], [trait]: newTrait };
+            return newPeas;
+       });
+    }
+      
     
     return (
         <div>
@@ -22,9 +32,12 @@ function Flowergame() {
                 <Pea 
                     setGameState={setGameState}
                     gameState={gameState}
-                    pot={pot}   // send entire pot instance through
+                    id={pot.id}   // send index into pot array
                     selectedPlants={selectedPlants}
                     setSelectedPlants={setSelectedPlants}
+                    
+                    allPots={pots}  // send all pots to every pot
+                    updatePots={updatePeas}
                 />
             ))}
 
