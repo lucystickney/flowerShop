@@ -1,10 +1,31 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+body, html {
+  
+  width: 100%;
+
+}
+
+.flowerShop-container {
+  background-image: url('./images/flowerPots.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  position: relative;
+  
+  
+  overflow: auto; /* Allows scrolling if content is larger */
+  z-index: -1;
+  
 }
 
 .pea-plant-0, .pea-plant-1, .pea-plant-2, .pea-plant-3 {

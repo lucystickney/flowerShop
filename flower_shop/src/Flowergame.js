@@ -28,7 +28,7 @@ function Flowergame() {
       
     
     return (
-        <div>
+        <div className="flowerShop-container">
             {pots.map((pot) => (    // creates a Pea pot for every plant
                 <Pea
                     setGameState={setGameState}
