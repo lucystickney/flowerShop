@@ -7,15 +7,17 @@
   pointer-events: none;
 }
 
-.pea-plant {
+.pea-plant-0, .pea-plant-1, .pea-plant-2, .pea-plant-3 {
   
   border: 2px solid black;
   margin: 20px;
   display: flex;
   flex-direction: column;
-
-  
+  max-width: 200px;
+  max-height: auto;
 }
+
+
 
 .stats-box {
   border: 2px solid black;

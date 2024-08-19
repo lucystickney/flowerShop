@@ -1,9 +1,19 @@
 //import React, { useState, useEffect } from 'react';
 
 function Stats( {id, pot, showing, potState, changePot, setGameState, pollinate, growPlant} ) {
-    const statement = (potState === 'grown') ? 'Remove plant' : 'Grow Plant';
+    let statement;
     console.log("pot: "+pot);
 
+    if (pot.state === 'grown') {
+        statement = 'Remove Plant';
+    } else if (pot.state === 'empty') {
+        statement = 'Grow Plant';
+    } else {
+        statement = 'Cancel Pollination';
+    }
+
+    // when plant is growing, should display "select x more plants"
+    const selectTwo = (pot.state === 'growing');
     // const handleButtonClick = () => {
     //     if (pot.state === 'grown') {
     //         // the button should be remove
@@ -14,7 +24,7 @@ function Stats( {id, pot, showing, potState, changePot, setGameState, pollinate,
 
     // click the button --> its either grow or remove
     const handleGrowOrRemove = () => {
-        if (potState === 'grown') {
+        if (pot.state === 'grown') {
             console.log('removing plant');
             // remove the plant
             changePot(id, 'state', 'empty');
@@ -22,11 +32,16 @@ function Stats( {id, pot, showing, potState, changePot, setGameState, pollinate,
             // update the pot's fields
             
             
-        } else {
+        } else if (pot.state ==='empty') {
             // grow plant --> go into logic of cross polination
             console.log('growing plant');
             changePot(id, 'state', 'growing');
             setGameState('pollinating');
+        } else if (pot.state === 'growing') {
+            // should give option to cancel pollination
+            console.log('cancel pollination');
+            changePot(id, 'state', 'empty');
+            setGameState('idle');
         }
     }
 
@@ -37,6 +52,9 @@ function Stats( {id, pot, showing, potState, changePot, setGameState, pollinate,
             <div>
                 
                 <p>Flower Color: {pot.color}</p>
+                {selectTwo && (
+                    <p>Select 2 grown pots</p>
+                )}
                 <button onClick={handleGrowOrRemove}>{statement}</button>
                 {pollinate &&  (
                 <button onClick={growPlant}>Grow New Plant</button>
