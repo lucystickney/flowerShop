@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Stats from './Stats';
+//import colors from './utils/utils';
+import colors from './utils/utils';
+
+
 
 
 // setGameState => sets the game state to idle or pollinating
@@ -9,8 +13,10 @@ import Stats from './Stats';
 // setSelectedPlants => updates array of selected plants
 // allPots => array of all pots that exist
 // updatePots => function that updates traits of the pots array
-function Pea({ setGameState, gameState, id, selectedPlants, setSelectedPlants, allPots, updatePots }) {
+function Pea({ setGameState, gameState, id, selectedPlants, setSelectedPlants, allPots, updatePots, color_image }) {
     console.log("first pot: " + allPots[0].color);
+    //let color_image;
+   // const colors = [{rec_color}, {dom_color}];
     // pass the starting state --> most should start empty
     // const [potState, setPotState] = useState(pot.state);  // pea's state
     // //const [image, setImage] = useState()
@@ -119,6 +125,7 @@ function Pea({ setGameState, gameState, id, selectedPlants, setSelectedPlants, a
         // current state is fully grown
         updatePots(id, 'state', 'grown');
         setGameState('idle');
+        setPollinate(false);
 
     }
 
@@ -145,6 +152,19 @@ function Pea({ setGameState, gameState, id, selectedPlants, setSelectedPlants, a
             case 'color':
                 updatePots(id, 'color', genotype);
                 console.log("potColor: "+ allPots[id].color);
+                // if genotype contains 'X':
+                if (genotype.includes('X')){
+                    // it is dominant
+                    updatePots(id, 'image', colors[1]);
+                }
+                else {
+                    updatePots(id, 'image', colors[0]);
+                }
+                
+
+                    // set image to be dominant color
+                // else: 
+                    // set image to recessive
                 break;
             default:
                 console.log('phenotype not recognized');
@@ -193,8 +213,9 @@ function Pea({ setGameState, gameState, id, selectedPlants, setSelectedPlants, a
         // plant image, based on fields
         // plant stats, separate component
         
-        <div className="pea-plant" onClick={handleToggleClick}>
+        <div className={`pea-plant-${id}`} onClick={handleToggleClick}>
             <h1>pea plant</h1>
+            <img src={color_image} alt="flowerPot"/>
             <Stats id={id} pot={allPots[id]} showing={showStats} changePot={updatePots} setGameState={setGameState} pollinate={pollinate} growPlant={growPlant}/>
             
         </div>
