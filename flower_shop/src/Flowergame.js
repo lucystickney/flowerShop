@@ -1,5 +1,6 @@
 import Pea from './Pea';
 import React, { useState } from 'react';
+import colors from './utils/utils';
 
 function Flowergame() {
     // state of game itself
@@ -9,10 +10,10 @@ function Flowergame() {
     const [selectedPlants, setSelectedPlants] = useState([]);   // selected plants to create new plant
 
     const [pots, setPots] = useState([
-        { id: 0, color: 'Xx', state: 'grown' },    // start with color, add more
-        { id: 1, color: 'xx', state: 'grown' },     // id is same as index into pots
-        { id: 2, color: '', state: 'empty' },
-        { id: 3, color: '', state: 'empty' }
+        { id: 0, color: 'Xx', state: 'grown', image: colors[1] },    // start with color, add more
+        { id: 1, color: 'xx', state: 'grown', image: colors[0] },     // id is same as index into pots
+        { id: 2, color: '', state: 'empty', image: '' },
+        { id: 3, color: '', state: 'empty', image: '' }
     ]);
 
     console.log(pots[0].color);
@@ -29,7 +30,7 @@ function Flowergame() {
     return (
         <div>
             {pots.map((pot) => (    // creates a Pea pot for every plant
-                <Pea 
+                <Pea
                     setGameState={setGameState}
                     gameState={gameState}
                     id={pot.id}   // send index into pot array
@@ -38,6 +39,7 @@ function Flowergame() {
                     
                     allPots={pots}  // send all pots to every pot
                     updatePots={updatePeas}
+                    color_image={pot.image}
                 />
             ))}
 
