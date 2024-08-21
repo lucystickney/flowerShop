@@ -1,6 +1,7 @@
 import Pea from './Pea';
 import React, { useState } from 'react';
 import colors from './utils/utils';
+import background from './images/flowerPots.png';
 
 function Flowergame() {
     // state of game itself
@@ -29,8 +30,12 @@ function Flowergame() {
     
     return (
         <div className="flowerShop-container">
+            <img src={background} alt="empty pots"/>
+            <div className="peas-container">
             {pots.map((pot) => (    // creates a Pea pot for every plant
+
                 <Pea
+                    key={pot.id}
                     setGameState={setGameState}
                     gameState={gameState}
                     id={pot.id}   // send index into pot array
@@ -42,6 +47,7 @@ function Flowergame() {
                     color_image={pot.image}
                 />
             ))}
+            </div>
 
         </div>
     )
