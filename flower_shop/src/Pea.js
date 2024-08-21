@@ -39,84 +39,6 @@ function Pea({ setGameState, gameState, id, selectedPlants, setSelectedPlants, a
     }, [setPollinate, selectedPlants, allPots, id]);
 
 
-    // // gets called when selectedPlants changes
-    // useEffect(() => {
-    //     console.log('calling use effect');
-    //     console.log(selectedPlants.length);
-    //     if (selectedPlants.length === 2 && allPots[id].state === 'growing') {
-
-    //         console.log('length is 2');
-
-
-            
-    //         // calculate new pea genes
-    //         // function to help calculate genes of new plant
-    //         const calculateNewGenes = (plant1, plant2) => {
-
-    //             console.log('plant1: ' + plant1);
-    //             console.log('plant2: ' +plant2);
-    //             // calculate color gene
-    //             const [plant1Color1, plant1Color2] = plant1.split('');
-    //             const [plant2Color1, plant2Color2] = plant2.split('');
-
-    //             const colorArray = [plant1Color1 + plant2Color1, plant1Color1 + plant2Color2, plant1Color2 + plant2Color1, plant1Color2 + plant2Color2];
-    //             const colorIndex = Math.floor(Math.random() * colorArray.length);
-    //             console.log('index: ' + colorIndex);
-    //             console.log('chosen color: '+ colorArray[colorIndex]);
-    //             setPotGenes(colorArray[colorIndex], 'color');   // set the new plant to have new color
-    //         }
-
-    //         const setPotGenes = (genotype, phenotype) => {
-    //             switch (phenotype) {    // should have more later
-    //                 case 'color':
-    //                     setColor(genotype);
-    //                     pot.color = genotype;
-    //                     console.log("potColor: "+ pot.color);
-    //                     break;
-    //                 default:
-    //                     console.log('phenotype not recognized');
-    //             }
-    //         }
-    //         console.log('first selected plants color: ' + selectedPlants[0].color);
-    //         calculateNewGenes(selectedPlants[0].color, selectedPlants[1].color);
-
-    //         // function to handle image change when you grow a plant
-    //         const growPlant = () => {
-    //             // current state is fully grown
-    //             setPotState('grown');
-    //             setGameState('idle');
-                
-    //         }
-    
-    //         growPlant();
-    //         // reset selectedPots
-    //         setSelectedPlants([]);
-
-    //     }
-
-    // }, [potState, selectedPlants, setGameState, setSelectedPlants, pot]); // called whenever selectedPlants changes
-
-
-    // // gets called when pot changes
-    // useEffect(() => {
-
-    // })
-
-    // const calculateNewGenes = (plant1, plant2) => {
-
-    //     console.log('plant1: ' + plant1);
-    //     console.log('plant2: ' +plant2);
-    //     // calculate color gene
-    //     const [plant1Color1, plant1Color2] = plant1.split('');
-    //     const [plant2Color1, plant2Color2] = plant2.split('');
-
-    //     const colorArray = [plant1Color1 + plant2Color1, plant1Color1 + plant2Color2, plant1Color2 + plant2Color1, plant1Color2 + plant2Color2];
-    //     const colorIndex = Math.floor(Math.random() * colorArray.length);
-    //     console.log('index: ' + colorIndex);
-    //     console.log('chosen color: '+ colorArray[colorIndex]);
-    //     setPotGenes(colorArray[colorIndex], 'color');   // set the new plant to have new color
-    // }
-
     //function to handle image change when you grow a plant
     const growPlant = () => {
 
@@ -215,7 +137,7 @@ function Pea({ setGameState, gameState, id, selectedPlants, setSelectedPlants, a
         
         <div className={`pea-plant-${id}`} onClick={handleToggleClick}>
             <h1>pea plant</h1>
-            <img src={color_image} alt="flowerPot"/>
+            {color_image && <img src={color_image} alt="flowerPot"/>}
             <Stats id={id} pot={allPots[id]} showing={showStats} changePot={updatePots} setGameState={setGameState} pollinate={pollinate} growPlant={growPlant}/>
             
         </div>
