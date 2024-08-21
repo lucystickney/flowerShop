@@ -30,6 +30,7 @@ function Stats( {id, pot, showing, potState, changePot, setGameState, pollinate,
             changePot(id, 'state', 'empty');
             changePot(id, 'color', '');
             // update the pot's fields
+            changePot(id, 'image', '');
             
             
         } else if (pot.state ==='empty') {
