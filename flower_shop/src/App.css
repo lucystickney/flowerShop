@@ -13,24 +13,30 @@ body, html {
   width: 100%;
 
 }
-
+.peas-container {
+  position: absolute; /* doesn't move with scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 .flowerShop-container {
-  background-image: url('./images/flowerPots.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: auto;
+  height: auto;
+  overflow: auto; /* allows scrolling  */
+  
   
   position: relative;
   
-  
-  overflow: auto; /* Allows scrolling if content is larger */
-  z-index: -1;
+}
+.flowerShop-container img {
+  display: block;
+  width: auto;
+  height: auto; 
   
 }
-
 .pea-plant-0, .pea-plant-1, .pea-plant-2, .pea-plant-3 {
-  
-  border: 2px solid black;
+  position: absolute;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -38,6 +44,25 @@ body, html {
   max-height: auto;
 }
 
+.pea-plant-0 {
+  top: 150px;
+  left: 200px;
+}
+
+.pea-plant-1 {
+  top: 800px;
+  left: 200px;
+}
+
+.pea-plant-2 {
+  top: 200px;
+  left: 1150px;
+}
+
+.pea-plant-3 {
+  top: 550px;
+  left: 700px;
+}
 
 
 .stats-box {
